@@ -13,10 +13,10 @@ services:
       - dbdata:/var/lib/postgresql/data
 
 
-  backend:
+  server:
     env_file:
       - .development.env
-    container_name: backend
+    container_name: server
     build:
       context: .
     ports:
@@ -28,6 +28,7 @@ services:
   pgadmin:
     env_file:
       - pgadmin.env
+    container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
     ports:
@@ -36,7 +37,7 @@ services:
   client:
     container_name: client
     build:
-      context: https://github.com/borichevskiy/final-project-frontend-client.git#main
+      context: https://github.com/Irina-Belyavskaya/clothing-store-client.git#main
       dockerfile: Dockerfile
     ports:
       - "8000:3000"
@@ -44,7 +45,7 @@ services:
   admin:
     container_name: admin
     build:
-      context: https://github.com/borichevskiy/final-project-frontend-admin.git#main
+      context: https://github.com/Irina-Belyavskaya/clothing-store-admin.git#main
       dockerfile: Dockerfile
     ports:
     - "8001:3000"

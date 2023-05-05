@@ -12,31 +12,24 @@ import { UserRoleEntity } from "../app/roles/entities/user-role.entity";
 
 // ============ Views ================
 import { UserInfoView } from "src/app/users/views/user-info.view";
-import { createTables1680299249950 } from '../migrations/1680299249950-create-tables';
-import { DmlMigration1680299371259 } from '../migrations/1680299371259-DmlMigration';
 
 // ============ Migrations ================
+import { createTables1683286134248 } from "src/migrations/1683286134248-create-tables";
+import { DmlMigration1683286171399 } from "src/migrations/1683286171399-DmlMigration";
 
 config();
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  // host: `${process.env.POSTGRES_HOST}`,
-  // port: Number(process.env.POSTGRES_PORT),
-  // username: `${process.env.POSTGRES_USER}`,
-  // password: `${process.env.POSTGRES_PASSWORD}`,
-  // database: `${process.env.POSTGRES_DB}`,
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'final_db',
+  host: `${process.env.POSTGRES_HOST}`,
+  port: Number(process.env.POSTGRES_PORT),
+  username: `${process.env.POSTGRES_USER}`,
+  password: `${process.env.POSTGRES_PASSWORD}`,
+  database: `${process.env.POSTGRES_DB}`,
   installExtensions: true,
-  synchronize: true,
-  // migrations: [createTables1680299249950, DmlMigration1680299371259],
-  // migrationsRun: true,
+  migrations: [createTables1683286134248, DmlMigration1683286171399],
+  migrationsRun: true,
   entities: [UserEntity, UserInfoEntity, CartEntity, CategoryEntity, OrdersEntity, ProductsEntity,  UserRoleEntity, UserInfoView],
-
 };
 
 const dataSource = new DataSource(dataSourceOptions);

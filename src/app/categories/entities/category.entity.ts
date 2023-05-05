@@ -14,7 +14,7 @@ export class CategoryEntity extends IDEntity{
 
   @Column({
     name: 'image_url', 
-    default: 'https://res.cloudinary.com/dzouilf8r/image/upload/v1680113277/photo-1631679706909-1844bbd07221_qkpg37.avif'
+    default: 'https://images.unsplash.com/photo-1542060748-10c28b62716f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
   })
   image: string;
 
