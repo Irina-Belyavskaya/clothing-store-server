@@ -77,6 +77,12 @@ The following actions are available to you in your account:
 
 ![client_8](https://user-images.githubusercontent.com/99917629/236482174-d8c4f4f1-55dc-4ea8-80dc-95b628d3ef69.png)
 
+### Admin
+
+To be able to manage an online store, you need to register.
+
+![admin_1](https://user-images.githubusercontent.com/99917629/236482418-e1e0eefc-751b-4e6a-9b2c-aca32bf9c1fa.png)
+
 For admin available: 
 * manipulate with products
 * manipulate with categories
