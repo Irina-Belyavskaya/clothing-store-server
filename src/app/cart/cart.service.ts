@@ -7,11 +7,13 @@ import { CartRepo } from "./repos/cart.repo";
 import { AddProductToCartDto } from './dtos/add-product-to-cart.dto';
 import { UpdateQuantityDto } from './dtos/update-quantity.dto';
 import { UserSessionDto } from '../security/dtos/userSession.dto';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class CartService {
   constructor(
-    private readonly cartRepo: CartRepo
+    private readonly cartRepo: CartRepo,
+    private readonly i18n: I18nService
   ) { }
 
   async getCarts() {
@@ -27,6 +29,9 @@ export class CartService {
   }
 
   async addProductToCart(user: UserSessionDto, dto: AddProductToCartDto) {
+    if (dto.quantity > dto.productQuantity)
+      throw new Error(this.i18n.t('errors.ERRORS.ProductLimitnException'));
+
     const record = await this.cartRepo.findOne({where: {productId: dto.productId}});
     if (record) {
       record.quantity = record.quantity + dto.quantity;
@@ -51,6 +56,10 @@ export class CartService {
   async updateProductQuantity(dto: UpdateQuantityDto) {
     if (dto.quantity <= 0 )
       return await this.cartRepo.delete(dto.recordId);
+
+    if (dto.quantity > dto.productQuantity)
+      throw new Error(this.i18n.t('errors.ERRORS.ProductLimitnException'));
+    
     return await this.cartRepo.update(
       dto.recordId, 
       { quantity: dto.quantity, updated: new Date()}

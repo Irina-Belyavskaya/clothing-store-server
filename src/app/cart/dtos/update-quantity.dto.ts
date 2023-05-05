@@ -7,6 +7,11 @@ export class UpdateQuantityDto {
   recordId: string;
 
   @ApiProperty({
+    description: "Limit product quantity"
+  })
+  productQuantity: number;
+
+  @ApiProperty({
     description: "Update quantity"
   })
   quantity: number;

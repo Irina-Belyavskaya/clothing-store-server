@@ -11,6 +11,7 @@
     "UpdateInfoException": "Forbidden to update personal info",
     "NotFoundException": "User or Role not found",
     "UserUnauthorizedException": "User unauthorized",
-    "UserForbiddenException": "User is deactivated"
+    "UserForbiddenException": "User is deactivated",
+    "ProductLimitnException": "Product limit exceeded"
   }
 }

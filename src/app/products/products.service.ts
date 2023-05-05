@@ -6,13 +6,12 @@ import { CategoryRepo } from '../categories/repos/category.repo';
 
 // ============ DTOs ================
 import { CreateProductDto } from './dtos/create-product.dto';
+import { UpdateProductQuantityDto } from './dtos/update-product-quantity.dto';
 
 
 @Injectable()
 export class ProductsService {
-  constructor(private readonly productsRepository: ProductsRepo,
-              private readonly categoryRepository: CategoryRepo,
-              ) {}
+  constructor(private readonly productsRepository: ProductsRepo) {}
 
   async getProductById(id: string) {
     return await this.productsRepository.getProductById(id);
@@ -33,5 +32,10 @@ export class ProductsService {
 
   async delete(id: string) {
     return await this.productsRepository.delete(id);
+  }
+
+  async updateProductQuantity(dto: UpdateProductQuantityDto) {
+    const product = await this.getProductById(dto.productId);
+    return await this.productsRepository.update(dto.productId, {quantity: product.quantity - dto.boughtQuantity, updated: new Date()});
   }
 } 

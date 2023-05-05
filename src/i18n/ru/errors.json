@@ -11,6 +11,7 @@
     "UpdateInfoException": "Forbidden to update personal info",
     "NotFoundException": "Пользователь или роль не найдены",
     "UserUnauthorizedException": "Пользователь не авторизован",
-    "UserForbiddenException": "Пользователь деактивирован"
+    "UserForbiddenException": "Пользователь деактивирован",
+    "ProductLimitnException": "Превышен лимит продукта"
   }
 }

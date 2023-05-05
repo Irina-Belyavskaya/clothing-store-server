@@ -25,6 +25,6 @@ import { SecurityModule } from '../security/security.module';
     TypeOrmModule.forFeature([ProductsEntity, CategoryEntity]),
     SecurityModule
   ],
-  exports: [ProductsRepo]
+  exports: [ProductsRepo, ProductsService]
 })
 export class ProductsModule {}
