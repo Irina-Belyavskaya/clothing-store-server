@@ -8,6 +8,7 @@ import { CartRepo } from '../cart/repos/cart.repo';
 // ============ DTOs ================
 import { CreateOrderDto } from "./dtos/create-order.dto";
 import { UserSessionDto } from '../security/dtos/userSession.dto';
+import { ProductsService } from '../products/products.service';
 
 @Injectable()
 export class OrdersService {
@@ -16,6 +17,7 @@ export class OrdersService {
     private readonly i18n: I18nService,
     private readonly ordersRepo: OrdersRepo,
     private readonly cartRepo: CartRepo,
+    private readonly productService: ProductsService
   ) { }
 
   async getOrders() {
@@ -41,6 +43,10 @@ export class OrdersService {
 
     userCart.forEach(cart => {
       products.push({product: cart.products, quantity: cart.quantity})
+      this.productService.updateProductQuantity({
+        productId: cart.products.id, 
+        boughtQuantity: cart.quantity
+      });
     })
 
     const newOrder = this.ordersRepo.create({

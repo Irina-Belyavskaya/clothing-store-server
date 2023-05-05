@@ -21,6 +21,7 @@ import { CartRepo } from '../cart/repos/cart.repo';
 // ============ Modules ================
 import { SecurityModule } from '../security/security.module';
 import { CartModule } from '../cart/cart.module';
+import { ProductsModule } from '../products/products.module';
 
 
 @Module({
@@ -29,7 +30,8 @@ import { CartModule } from '../cart/cart.module';
   imports: [
     CartModule,
     TypeOrmModule.forFeature([OrdersEntity, UserEntity, CartEntity]),
-    SecurityModule
+    SecurityModule,
+    ProductsModule
   ],
 })
 export class OrdersModule {}
