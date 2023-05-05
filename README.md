@@ -14,7 +14,6 @@ Consists of 3 repositories - backend, client, admin.
 [Client application](https://github.com/Irina-Belyavskaya/clothing-store-client.git)
 
 [Admin application](https://github.com/Irina-Belyavskaya/clothing-store-admin.git)
----
 
 ## Running the app
 
